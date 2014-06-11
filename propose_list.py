@@ -1,3 +1,9 @@
+'''
+Program works for current directory
+just be sure to have .txt data there
+and to output results to a file or somewhere
+'''
+
 import os
 import codecs
 import numpy as np
@@ -21,11 +27,13 @@ def search_for_max(maax):
     return item
 
 #print 'Test............'
+'''
 vect = TfidfVectorizer(min_df=1)
 tfidf = vect.fit_transform(["I'd like an apple",
                             "An apple a day keeps the doctor away",
                             "Never compare an apple to an orange",
                             "I prefer scikit-learn to Orange"])
+'''
 #print (tfidf * tfidf.T).A
 #print 'End of test.................'
 
