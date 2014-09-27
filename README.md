@@ -1,8 +1,34 @@
 text-similarity
 ===============
 
-Transform input files into tf-idf vectors, then compute the cosine similarity between them.
+### Description
 
-Program is designed to output maximum 2000 least-similar text files.
+Transform input files into **tf-idf vectors**, then compute the cosine similarity between them. Program is designed to output maximum 2000 least-similar text files. If I will find more time, I will add more options, including choosing whether to search for similar files or the opposite.
 
-If I will find more time, I will add more options here with choosing searching for similarity of the opposite.
+#### Miscellaneous 
+
+Tested on Python 2.7.3
+
+#### License
+
+The MIT License (MIT)
+
+Copyright (c) 2013-2014 Oskar Jarczyk
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
