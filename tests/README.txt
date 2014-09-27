@@ -1,0 +1,1 @@
+contains text files with couple of similiar and non-similiar sentences

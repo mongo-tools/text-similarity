@@ -7,8 +7,15 @@ and to output results to a file or somewhere
 import os
 import codecs
 import numpy as np
+import itertools
+import glob
+import sys
 
 from sklearn.feature_extraction.text import TfidfVectorizer
+
+
+def allglob(args):
+    return itertools.chain.from_iterable(map(glob.iglob, args))
 
 
 def include_ext(ext):
@@ -37,10 +44,15 @@ tfidf = vect.fit_transform(["I'd like an apple",
 #print (tfidf * tfidf.T).A
 #print 'End of test.................'
 
-text_files = filter(os.path.isfile, os.listdir(os.curdir))  # files only
-text_files = filter(include_ext(".txt"), text_files)
+print 'Program accepts a list of files in execution arguments (possible wilcards)'
+print 'In case of no-arg, it searches for .txt files in the same dir...'
 
-#print '................................................................'
+text_files = list(allglob(sys.argv[1:]))
+if len(text_files) < 1:
+    text_files = filter(os.path.isfile, os.listdir(os.curdir))  # files only
+    text_files = filter(include_ext(".txt"), text_files)
+
+print 'These are the input text files:'
 print text_files
 #print '................................................................'
 documents = [codecs.open(f, 'r', encoding='utf-8', errors='ignore').read() for f in text_files]
@@ -63,8 +75,10 @@ tfidf = TfidfVectorizer(min_df=1).fit_transform(documents)
 #print '.....................'
 
 cosine_sim = (tfidf * tfidf.T).toarray()
-#print cosine_sim
+print '(tfidf * tfidf.T)'
+print cosine_sim
 ms = []
+print 'After argsort:'
 for i in range(0, len(text_files)):
     most_similar = np.argsort(cosine_sim[:, i])[::-1]
     print most_similar
@@ -75,6 +89,8 @@ for i in range(0, len(text_files)):
 counts = dict()
 results = []
 
+print 'After counting operations:'
+
 for y in reversed(range(1, len(ms))):  # kolumny
     for x in range(0, len(ms)):  # wpisy (wystapienia, wiersze)
         counts[str(ms[x][y])] = counts[str(ms[x][y])] + 1 if str(ms[x][y]) in counts else 1
@@ -84,4 +100,5 @@ for y in reversed(range(1, len(ms))):  # kolumny
 print results[0:1999]  # this is guaranted to have insert order
 zz = [text_files[int(x)] for x in results[0:1999]]  # same here
 print zz
+print 'Duplicates removed:'
 print set(zz)
